@@ -23,7 +23,7 @@ class ProjectHelper(Manager):
         driver.find_element_by_link_text("Manage Projects").click()
 
 
-    def open_create_new_progect_form(self):
+    def open_create_new_project_form(self):
         driver = self.app.driver
         driver.find_element_by_xpath("//input[@value='Create New Project']").click()
 
@@ -73,7 +73,8 @@ class ProjectHelper(Manager):
             projects = element.find_element_by_name('project_id').text
             list_of_projects = projects.split('\n')
             list_of_projects.remove('All Projects')
-            return list_of_projects
+        return list_of_projects
 
 
 
+#if driver.find_element_by_css_selector('form[name="form_set_project"]'):
