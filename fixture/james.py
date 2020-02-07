@@ -26,7 +26,7 @@ class JamesHelper(Manager):
 
 
         def read_until(self, text):
-            self.telnet.read_until(text.encode('ascii'), 5)
+            self.telnet.read_until(text.encode('ascii'), 15)
 
 
         def write(self, text):
