@@ -17,8 +17,8 @@ class SoapHelper(Manager):
     def get_num_projects(self, username, password):
         client = Client('http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl')
         try:
-            response = client.service.mc_enum_projections(username, password)
-            return list(response)
-        except WebFault:
-            return False
+            response = client.service.mc_projects_get_user_accessible(username, password)
+            return (response)
+        except WebFault as e:
+            return e
 
