@@ -12,8 +12,8 @@ class Project:
         self.id = id
 
     def __repr__(self):
-        return "%s:%s:%s:%s:%s:%s" % (
-        self.id, self.name, self.status, self.inherit_global, self.view_state, self.description)
+        return "%s:%s:%s:" % (
+        self.id, self.name, self.status)
 
     def __eq__(self, other):
         return (self.name is None or other.name is None or self.name == other.name) and self.id == other.id

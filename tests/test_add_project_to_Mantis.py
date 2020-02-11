@@ -22,7 +22,13 @@ def test_add_project_to_Mantis(app, project, check_ui):
 
     assert len(old_SOAP_list) == len(new_SOAP_list)
 
+    print(old_SOAP_list)
+
     old_project_list.append(project)
+
+
+    assert sorted(old_SOAP_list, key = Project.id_or_max) == sorted(old_SOAP_list, key = Project.id_or_max)
+
 
     if check_ui:
         assert sorted(old_project_list) == sorted(new_project_list)

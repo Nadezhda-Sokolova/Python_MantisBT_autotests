@@ -6,7 +6,7 @@ constant = Project(name="Lovely", status='development',
            inherit_global="checked", description='ttt')
 
 def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits
+    symbols = string.ascii_letters
     return prefix + ''.join([random.choice(symbols) for i in range (random.randrange(maxlen))])
 
 # testdata = [
