@@ -28,40 +28,50 @@ def test_to_delete_project_to_Mantis(app, check_ui):
     app.project.press_project_to_delete(project_name_to_delete)
     app.project.delete_project()
 
+    # verification from UI
+
     new_SOAP_list = app.soap.get_num_projects("administrator", "root")
     assert len(old_SOAP_list) - 1 == len(new_SOAP_list)
+    old_SOAP_list.remove(project_name_to_delete)
+    assert sorted(old_SOAP_list) == sorted(new_SOAP_list)
 
 
-    i=0
-    L=[]
-    while i < (len(old_SOAP_list)-1):
-        L.append(old_SOAP_list[i]['name'])
-        i=i+1
-    print (L)
+   # verification from UI
 
-    j = 0
-    L1 = []
-    while j < (len(old_SOAP_list) - 1):
-        L1.append(old_SOAP_list[j]['name'])
-        j = j + 1
-    print(L)
-
-    L.remove(project_name_to_delete)
-
-    if check_ui:
-        assert sorted(L) == sorted(L1)
-    app.session.logout()
-    app.open_home_page()
+    # app.project.get_manage_creation_page()
+    # new_project_list = app.project.get_project_list()
+    # new_project_list.append(project_name_to_delete)
+    # assert sorted(old_project_list) == sorted(new_project_list)
+    # app.session.logout()
 
 
+    # verification from full SOAP data of response
+
+    # i=0
+    # L=[]
+    # while i < (len(old_SOAP_list)-1):
+    #     L.append(old_SOAP_list[i][1])
+    #     i=i+1
+    # print (L)
+    #
+    # j = 0
+    # L1 = []
+    # while j < (len(old_SOAP_list) - 1):
+    #     L1.append(old_SOAP_list[j]['name'])
+    #     j = j + 1
+    # print(L)
+    #
+    # L.remove(project_name_to_delete)
+    #
+    # if check_ui:
+    #     assert sorted(L) == sorted(L1)
+    # app.session.logout()
+    # app.open_home_page()
 
 
-    app.project.get_manage_creation_page()
-    new_project_list = app.project.get_project_list()
 
-    new_project_list.append(project_name_to_delete)
-    assert sorted(old_project_list) == sorted(new_project_list)
-    app.session.logout()
+
+
 
 
 
