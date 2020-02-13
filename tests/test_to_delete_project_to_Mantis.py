@@ -28,12 +28,16 @@ def test_to_delete_project_to_Mantis(app, check_ui):
     app.project.press_project_to_delete(project_name_to_delete)
     app.project.delete_project()
 
-    # verification from UI
+    # verification from SOAP
 
     new_SOAP_list = app.soap.get_num_projects("administrator", "root")
     assert len(old_SOAP_list) - 1 == len(new_SOAP_list)
-    old_SOAP_list.remove(project_name_to_delete)
-    assert sorted(old_SOAP_list) == sorted(new_SOAP_list)
+    project_for_d = [j for j in old_SOAP_list if j.name == project_name_to_delete]
+    print(old_SOAP_list)
+    print(project_for_d)
+    new_SOAP_list.append(project_for_d)
+    if check_ui:
+        assert sorted(old_SOAP_list) == sorted(new_SOAP_list)
 
 
    # verification from UI

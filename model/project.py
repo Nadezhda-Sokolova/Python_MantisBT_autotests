@@ -17,8 +17,8 @@ class Project:
         return "%s:%s:%s:%s:%s:%s" % (
         self.id, self.name, self.status, self.inherit_global, self.view_state, self.description)
 
-    def __eq__(self, other):
-        return (self.name is None or other.name is None or self.name == other.name) and self.id == other.id
+    # def __eq__(self, other):
+    #     return (self.name is None or other.name is None or self.name == other.name) and self.id == other.id
 
     def id_or_max(self):
         if self.id:

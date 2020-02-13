@@ -19,6 +19,7 @@ def test_add_project_to_Mantis(app, project, check_ui):
     #verificartion from API via SOAP
     new_SOAP_list = app.soap.get_num_projects("administrator", "root")
     old_SOAP_list.append(project)
+    print(old_SOAP_list)
     assert len(old_SOAP_list) == len(new_SOAP_list)
     if check_ui:
         assert sorted(old_SOAP_list) == sorted(new_SOAP_list)

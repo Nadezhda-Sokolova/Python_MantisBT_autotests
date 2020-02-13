@@ -20,3 +20,4 @@ def random_string(prefix, maxlen):
 project = [Project(name=random_string("name", 10), status=random.choice(['development', 'release', 'stable', 'obsolete']),
            inherit_global=random.choice(["checked", '']), description=random_string("description", 20))
             for i in range(1)]
+
