@@ -102,14 +102,3 @@ def load_from_json(file):
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
         return jsonpickle.decode(f.read())
 
-
-# @pytest.fixture
-# def app(request):
-#     global fixture
-#     global target
-#     browser = request.config.getoption('--browser')
-#     web_config = load_config(request.config.getoption("--target"))['web']
-#     if fixture is None or not fixture.is_valid():
-#         fixture = Application(browser=browser, base_url=web_config["base_url"])
-#     fixture.session.ensure_login(username=web_config["username"], password=web_config["password"])
-#     return fixture
